@@ -9,16 +9,16 @@ jobs:
       - uses: actions/checkout@v2
       - name: Build Atomic Red Team image
         run: |
-          docker build -t Dockerfiles/Atomic-Red-Team-Install.dockerfile .
+          docker build -f Dockerfiles/Atomic-Red-Team-Install.dockerfile -t atomic-red-team.
       - name: Start Atomic Red Team container
         run: |
-          docker run -d --name Atomic-Red-Team Atomic-Red-Team
+          docker run -d --name atomic-red-team atomic-red-team
       - name: Run Atomic Red Team tests
         run: |
-          docker exec Atomic-Red-Team powershell -Command 'invoke-atomic T1003.001'
+          docker exec atomic-red-teamm powershell -Command 'invoke-atomic T1003.001'
       - name: Stop Atomic Red Team container
         run: |
-          docker stop Atomic-Red-Team
+          docker stop atomic-red-team
       - name: Remove Atomic Red Team container
         run: |
-          docker rm Atomic-Red-Team
+          docker rm atomic-red-team
