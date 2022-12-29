@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/windows:1909
+FROM mcr.microsoft.com/windows/nanoserver:1803-amd64
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
