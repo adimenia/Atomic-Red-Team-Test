@@ -13,7 +13,7 @@ jobs:
         shell: powershell
       - name: Download & Install Atomic Red Team
         run: |
-          IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing); Install-AtomicRedTeam
+          IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing); Install-AtomicRedTeam -getAtomics -Force
         shell: powershell
           
       - name: Importing the Atomic Red Team Module
