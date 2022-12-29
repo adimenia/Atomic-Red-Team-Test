@@ -7,12 +7,9 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Check Powershell version
+      - name: Download Atomic Red Team
         run: |
-          powershell.exe  '$PSVersionTable.PSVersion'
-      #- name: Download Atomic Red Team
-      #  run: |
-      #    powershell.exe IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing) 
+          powershell.exe IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing) 
           
       #- name: Install Atomic Red Team
       #  run: |
