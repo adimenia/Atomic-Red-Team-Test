@@ -11,14 +11,16 @@ jobs:
         run: | 
           Set-ExecutionPolicy Bypass -Scope Process -Force
         shell: powershell
-      - name: Download Atomic Red Team
+      - name: Download & Install Atomic Red Team
         run: |
           IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing); Install-AtomicRedTeam
         shell: powershell
           
-      #- name: Install Atomic Red Team
-      #  run: |
-      #    powershell.exe Install-AtomicRedTeam -getAtomics
-      #- name: Import Atomic Red Team Module
-      #  run: |
-      #   powershell.exe Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
+      - name: Importing the Atomic Red Team Module
+        run: |
+          Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
+        shell: powershell
+      - name: Execute All T1218.010 Techniqes
+        run: |
+         Invoke-AtomicTest T1218.010
+        shell: powershell
