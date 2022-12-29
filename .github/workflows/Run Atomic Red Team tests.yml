@@ -7,18 +7,6 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build Atomic Red Team image
+      - name: Run Hello World via Powershell
         run: |
-          docker build -f Dockerfiles/Atomic-Red-Team-Install.dockerfile -t atomic-red-team .
-      - name: Start Atomic Red Team container
-        run: |
-          docker run -d --name atomic-red-team --isolation=hyperv atomic-red-team  
-      - name: Run Atomic Red Team tests
-        run: |
-          docker exec atomic-red-teamm powershell -Command 'invoke-atomic T1003.001'
-      - name: Stop Atomic Red Team container
-        run: |
-          docker stop atomic-red-team
-      - name: Remove Atomic Red Team container
-        run: |
-          docker rm atomic-red-team
+          powershell.exe Write-Host "Hello World"
