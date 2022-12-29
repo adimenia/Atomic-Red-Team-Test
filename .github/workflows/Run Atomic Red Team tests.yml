@@ -16,11 +16,7 @@ jobs:
           IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing); Install-AtomicRedTeam -getAtomics -Force
         shell: powershell
           
-      - name: Importing the Atomic Red Team Module
+      - name: Importing the Atomic Red Team Module & Invoking T1218.010
         run: |
-          Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
-        shell: powershell
-      - name: Execute All T1218.010 Techniqes
-        run: |
-         Invoke-AtomicTest T1218.010
+          Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force; Invoke-AtomicTest T1218.010
         shell: powershell
