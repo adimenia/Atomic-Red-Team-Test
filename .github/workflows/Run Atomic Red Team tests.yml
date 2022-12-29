@@ -7,16 +7,19 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Download Atomic Red Team
+      - name: Check Powershell version
         run: |
-          powershell.exe IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing) 
+          powershell.exe  $PSVersionTable.PSVersion
+      #- name: Download Atomic Red Team
+      #  run: |
+      #    powershell.exe IEX (IWR 'https://raw.githubusercontent.com/redcanaryco/invoke-atomicredteam/master/install-atomicredteam.ps1' -UseBasicParsing) 
           
-      - name: Install Atomic Red Team
-        run: |
-          powershell.exe Install-AtomicRedTeam -getAtomics
-      - name: Set Execution Policy to Bypass
-        run: | 
-          powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force
-      - name: Import Atomic Red Team Module
-        run: |
-          powershell.exe Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
+      #- name: Install Atomic Red Team
+      #  run: |
+      #    powershell.exe Install-AtomicRedTeam -getAtomics
+      #- name: Set Execution Policy to Bypass
+      #  run: | 
+      #    powershell.exe Set-ExecutionPolicy Bypass -Scope Process -Force
+      #- name: Import Atomic Red Team Module
+      #  run: |
+      #   powershell.exe Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" -Force
